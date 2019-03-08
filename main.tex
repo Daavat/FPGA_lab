@@ -1,0 +1,325 @@
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+\documentclass{beamer}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, automata, positioning, quotes}
+
+% There are many different themes available for Beamer. A comprehensive
+% list with examples is given here:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+% You can uncomment the themes below if you would like to use a different
+% one:
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{boxes}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{default}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+\title{Traffic light controller using FPGA}
+
+% A subtitle is optional and this may be deleted
+\subtitle{FPGA Lab \& IDP}
+
+\author{Sai Bharadwaj\inst{1} \and Anandita\inst{2}}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[] % (optional, but mostly needed)
+{
+  \inst{1}%
+  Department of Electrical Engineering\\
+  EE16BTECH11037
+  \and
+  \inst{2}%
+  Department of Engineering science\\
+  ES16BTECH11001}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+%\date{Conference Name, 2013}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%\AtBeginSubsection[]
+% {
+%   \begin{frame}<beamer>{Outline}
+%     \tableofcontents[currentsection,currentsubsection]
+%   \end{frame}
+% }
+
+% Let's get started
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+% \begin{frame}{TRAFFIC LIGHT CONTROLLER}
+%   \tableofcontents
+%   \begin{figure}
+%   \includegraphics[scale=0.5]{4_way.png}
+%   \caption{four way traffic lights}
+%   \end{figure}
+%   % You might wish to add the option [pausesections]
+% \end{frame}
+
+% Section and subsections will appear in the presentation overview
+% and table of contents.
+\section{Objective}
+
+\subsection{To implement four way road traffic light controller in verilog}
+
+\begin{frame}{CONTENTS}%{Optional Subtitle}
+  \begin{itemize}
+  \item {
+    Introduction 
+  }
+  \item {
+    State Table
+  }
+  \item {
+    State Diagram
+  }
+  \item {
+    Verilog code
+  }
+  \item {
+    Simulation
+  }
+  \item {
+    Conclusion 
+  }
+  \end{itemize}
+\end{frame}
+
+%\subsection{Second Subsection}
+
+% You can reveal the parts of a slide one at a time
+% with the \pause command:
+\begin{frame}{Introduction}
+  \begin{itemize}
+  \item {
+    Traffic Lights:
+        commonly known as traffic signals, signal lights etc and technically known as traffic control signals are signalling devices positioned at road intersection, pedestrian crossings and other locations to control competing flows of traffic.
+    \pause % The slide will pause after showing the first item
+  }
+  \item {   
+    Three standard colors are used for traffic lights they are
+    \begin{itemize}
+        \item{ Green - Allow the traffic to proceed in the direction denoted}
+        \item{ Yellow - Provide a warning that the signal will change from red to green and therefore start the vehicle}
+        \item{Red - Prohibit the traffic from proceding }
+    \end{itemize}
+  }
+  % You can also specify when the content should appear
+  % by using <n->:
+  %\item<3-> {
+   % Third item.
+  %}
+  %\item<4-> {
+   % Fourth item.
+  %}
+  % or you can use the \uncover command to reveal general
+  % content (not just \items):
+  %\item<5-> {
+  %  Fifth item. \uncover<6->{Extra text in the fifth item.}
+  %}
+  \end{itemize}
+\end{frame}
+
+%\section{Second Main Section}
+\begin{frame}{Why use FPGA?}
+  \begin{itemize}
+  \item { FPGA (Field Programmable Gate Array): This is an IC that contains an array of logic cells that can be programmed by user.}
+  \item { FPGA has many advantages over microcontroller in speed, number of input and output ports \& performance.}
+  \item{FPGA is cheaper solution when compared to ASIC which is too costly and time consuming for small scale production}
+  \item{In general, traffic lights on main roads are controlled with a fix-time control system which may lead to traffic congestions during rush hours}
+  \item{VHDL is preferred especially for FPGA design because VHDL can be used to describe and simulate operation of ditial circuits}
+  \end{itemize}
+\end{frame}
+
+%\section{Second Main Section}
+\begin{frame}{Objectives}
+  \begin{itemize}
+  \item {Transform word description of the protocol in to a Finite State Machine trasition diagram. }
+  \item {Implement simple Finite State Machine using VHDL}
+  \item{Simulate the operation of FSM}
+  \item{Implement the design on to a FPGA}
+  \end{itemize}
+\end{frame}
+
+
+%\subsection{Another Subsection}
+
+\begin{frame}{State Table}
+\begin{itemize}
+    \item The three lights (Green , Yellow , Red) cycle through the six states as shown in the table 
+\end{itemize}
+
+\begin{table}
+\begin{tabular}{l | c | c | c }
+State & North-South & East-West & Delay \\
+\hline \hline
+0 & Green & Red & 5 \\ 
+1 & Yellow & Red & 1 \\
+2 & Red & Red & 1 \\
+3 & Red & Green & 5 \\ 
+4 & Red & yellow & 1\\
+5 & Red & Red & 1
+\end{tabular}
+\caption{Table showing different states and there corresponding delays}
+\end{table}
+
+\end{frame}
+
+\begin{frame}{State Diagram}
+
+\begin{tikzpicture}[
+    shorten < =  1mm, shorten > = 1mm,
+node distance = 33mm, on grid, auto,
+every path/.style = {bend left, -Latex}
+                    ]
+\node[state] (0) {0};
+\node[state] (1) [right=of 0] {1};
+\node[state] (2) [right=of 1] {2};
+\node[state] (3) [below=of 2] {3};
+\node[state] (4) [left=of 3] {4};
+\node[state] (5) [left=of 4] {5};
+%
+\path[->]   (0) edge ["a"] (0)
+            (0) edge (1)
+            (1) edge ["count \< 3"] (1)
+            (1) edge (2)
+            (2) edge ["count \< 3"] (2)
+            (2) edge (3)
+            (3) edge ["count \< 15"] (3)
+            (3) edge (4)
+            (4) edge ["count \< 3"] (4)
+            (4) edge (5)
+            (5) edge ["count \< 3"] (5)
+            (5) edge (0);
+\end{tikzpicture}
+
+\end{frame}
+
+%\begin{frame}{Blocks}
+%\begin{block}{Block Title}
+%You can also highlight sections of your presentation in a block, with it's own title
+%\end{block}
+%\begin{theorem}
+%There are separate environments for theorems, examples, definitions and proofs.
+%\end{theorem}
+%\begin{example}
+%Here is an example of an example block.
+%\end{example}
+%\end{frame}
+
+% Placing a * after \section means it will not show in the
+% outline or table of contents.
+%\section*{Summary}
+
+%\begin{frame}{Summary}
+%  \begin{itemize}
+%  \item
+ %   The \alert{first main message} of your talk in one or two lines.
+ % \item
+%    The \alert{second main message} of your talk in one or two lines.
+%  \item
+%    Perhaps a \alert{third message}, but not more than that.
+%  \end{itemize}
+  
+%  \begin{itemize}
+ % \item
+%    Outlook
+ %   \begin{itemize}
+%    \item
+%      Something you haven't solved.
+%    \item
+%      Something else you haven't solved.
+%    \end{itemize}
+%  \end{itemize}
+%\end{frame}
+
+
+
+% All of the following is optional and typically not needed. 
+%\appendix
+%\section<presentation>*{\appendixname}
+%\subsection<presentation>*{For Further Reading}
+
+%\begin{frame}[allowframebreaks]
+%  \frametitle<presentation>{For Further Reading}
+    
+%  \begin{thebibliography}{10}
+    
+%  \beamertemplatebookbibitems
+  % Start with overview books.
+
+%  \bibitem{Author1990}
+%    A.~Author.
+%    \newblock {\em Handbook of Everything}.
+%    \newblock Some Press, 1990.
+ 
+    
+%  \beamertemplatearticlebibitems
+  % Followed by interesting articles. Keep the list short. 
+
+%  \bibitem{Someone2000}
+%    S.~Someone.
+%    \newblock On this and that.
+%    \newblock {\em Journal of This and That}, 2(1):50--100,
+%    2000.
+%  \end{thebibliography}
+%\end{frame}
+
+\end{document}
+
+
