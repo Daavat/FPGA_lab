@@ -1,0 +1,7 @@
+set_io clk R9
+set_io green_ns A5
+set_io yellow_ns A2
+set_io red_ns C3
+set_io green_ew B4
+set_io yellow_ew B7
+set_io red_ew B6
